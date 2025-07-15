@@ -24,15 +24,12 @@ export const aboutQueryOptions = () => {
   };
 };
 
-export const hogeQueryOptions = () => {
+export const errorQueryOptions = () => {
   return {
-    queryKey: ['hoge'],
-    queryFn: () =>
-      // 適当なAPIを取得
-      fetch('https://jsonplaceholder.typicode.com/posts/3')
-        .then((res) => res.json())
-        .then((data) => {
-          return data;
-        })
+    queryKey: ['error'],
+    queryFn: async () => {
+      // 意図的にエラーを発生させる
+      throw new Error('This is a test error for error boundary');
+    }
   };
 };
